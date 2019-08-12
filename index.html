@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Game of Thrones</title>
+  <link rel="stylesheet" href="css/common.css">
+  <link rel="stylesheet" href="http://at.alicdn.com/t/font_1341550_m0ebvnqoq.css">
+  <style>
+    html,body {
+      height: 100%;/*全屏*/
+    }
+    header {
+      position: relative;/*相对定位*/
+      height:100%;
+      min-height: 800px;/*最小宽度*/
+      background: #000 url(imgs/56c670760001338413660768.jpg) center
+        center no-repeat;/*在整个页面是居中的，是不重复的*/
+        background-size: cover;/*contain和cover的区别*/
+    }
+    header .logo {
+      color: #f7ba3e;
+      font-size: 32px;
+      float: left;/*左浮动*/
+      margin-top: 10px;
+    }
+    header .nav {
+      float:right;/*右浮动*/
+    }
+    header .nav > li {/*header下面的nav下面的li*/
+      margin: 10px;
+      float: left;
+    }
+    header .nav a {
+      padding: 5px;
+      display: block;
+      color: #fff;
+      font-size: 13px;
+      border-radius: 4px;/*边框圆角*/
+    }
+    header .nav a:hover {/*header下面的nav下面的a 增添样式*/
+      background:#f7ba3e;
+    }
+    header .intro {
+      position: absolute;/*绝对定位*/
+      top:50%;
+      left: 50%;
+      transform: translate(-50%,-50%);/*往x轴,y轴移动自身长宽的 50%，以使其居于中心位置*/
+      color: #fff;
+      text-align: center;/*文字居中*/
+    }
+    header .intro h1 {
+      font-size: 32px;
+    }
+    header .intro h2 {
+      font-size: 46px;
+      margin-top: 20px;
+    }
+    header .intro .button {
+      margin-top: 20px;
+    }
+    section {
+      text-align: center;/*文本居中*/
+      margin-top: 400px;
+    }
+    section h2 {
+      font-size: 40px;
+    }
+    section > p {
+      margin-top: 10px;
+    }
+    section .family-intro > li {
+      float: left;
+      width: 33.33%;
+      padding: 10px;
+    }
+    section > ul .iconfont {
+      font-size: 40px;
+    }
+    section > ul p {
+      margin-top: 10px;
+    }
+    section .family figure {
+      width: calc(33.33% - 20px);
+      height: 265px;
+      margin: 10px;
+      float: left;
+    }
+    section .family a {
+      display: block;
+      height: 180px;
+    }
+    section .family img {
+      width: 100%;
+      height: 100%;
+    }
+    section .family figcaption {
+      font-size: 18px;
+      font-weight: bold;
+      margin-top: 10px;
+    }
+    section .family p {
+      color: #666;
+      margin-top: 10px;
+    }
+    section .timeline > li {
+      position: relative;
+      margin-top: 40px;
+    }
+    section .timeline > li:nth-child(odd) {
+      padding-right: calc(50% - 50px);/*li的有内边距的50%减去图片的宽50px*/
+      text-align:right;
+    }
+    section .timeline > li::after{
+      content: '';
+      display: block;
+      clear: both;
+
+    }
+    section .timeline img,
+    section .timeline .img {
+      display: inline-block;
+      text-align: center;
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;/*边框变成圆形*/
+      border: 3px solid lightblue;/*边框：3px纯色浅蓝色*/
+      font-size: 10px;
+    }
+    section .timeline .img {
+      padding-top: 10px;
+    }
+    section .timeline > li:nth-child(odd) dl {
+      margin-right: 120px;
+    }
+    section .timeline > li:nth-child(odd) img {
+      float: right;
+    }
+    section .timeline > li:nth-child(even){
+      padding-left: calc(50% - 50px);
+      text-align:left;
+    }/*nth-child(even) 的意思就是从第1开始的偶数元素，:even的意思是指从第0开始的
+    偶数元素在实际中一个常见的例子就是，当给表格的偶数行设置变色时，可以跳过表头行
+    ，而从第1行开始设置*/
+    section .timeline > li:nth-child(even) dl {
+      margin-left: 120px;
+    }
+    section .timeline > li:nth-child(even) img {
+      float: left;
+    }
+    section .timeline dt {
+      font-size: 16px;
+      font-weight: bold;
+    }
+    section .timeline dd:nth-of-type(1) {
+      color: #666;
+    }
+    section .timeline > li::before {
+      content: '';
+      position: absolute;
+      left: 50%;
+      top: 100px;
+      margin-left: 0px;
+      display: inline-block;
+      height: 51px;
+      width: 3px;
+      background-color: lightblue;
+    }
+    section .timeline > li:last-child::before {
+      height: 0;
+    }
+
+
+
+
+
+
+
+
+      .begin {
+        width: 100%;
+        margin-top: 400px;
+        text-align:center;
+      }
+      .begin > h2 {
+        font-size: 40px;
+      }
+      .begin > h3 {
+        margin-top: 20px;
+        font-size: 16px;
+        color: #777;
+      }
+      footer .box {
+        width: 900px;
+        margin: 0 auto;
+        margin-top: 20px;
+      }
+      footer .box .personal{
+        text-align:center;
+        float:left;
+        width: 300px;
+        margin: 0 auto;
+        width: calc(33.33%);
+      }
+      footer .box .personal > ul {
+        float:left;
+        text-align:center;
+        margin: 0 auto;
+        margin-top: 20px;
+        width: 300px;
+      }
+      footer .box .personal > img {
+        width: 255px;
+        height: 255px;
+        margin-bottom: 20px;
+        margin-top: 50px;
+      }
+      
+    
+    
+
+
+      .package {
+        width: 100%;
+        height: 900px;
+        background: url(imgs/d42705b3633e09bfb0c33bc086350f635ab18054.jpg);/*背景图片*/
+        background-repeat:no-repeat;/*设置背景图片不平铺*/
+        background-size:cover;/*使背景图像完全覆盖屏幕，背景图像的某些部分也许无法显示在背景定位区域中。*/
+        margin-top: 400px;
+      }
+      .package .large > h3 {
+        font-size:30px;
+        color: #fff;
+        text-align: center;
+        
+      }
+      .package .large > p {
+        color: #777;
+        text-align: center;
+        margin-top:70px;
+      }
+      .package .three {
+        float: left;
+        margin-left: 23px;
+      }
+      .package .three input {
+        border-radius: 10px; 
+      }
+      .package .three > li {
+        margin-bottom: 6px;
+      }
+      .package .single textarea {
+        border-radius: 10px;
+      }
+      .package .ensemble {
+        width: 1200px;
+        margin-top: 50px;
+        margin-right: auto;
+        margin-left: auto;
+      }
+      .package .ensemble ul {
+        padding: 15px;
+      }
+      .package button {
+        color: #fff;
+        background-color: #fed136;
+        border-color: #fed136;
+        font-family: Montserrat, "Helvetica Neue", Helvetica, Arial, sans-serif;
+        /*font-family 是字体的意思，Arial,Helvetica,sans-serif 这三种都是字体。如果系统有Arial这种字体，
+        就显示Arial这种字体。如果系统没有Arial这种字体，就以Helvetica 这种字体显示。以此类推。如果都没有。
+        就以系统默认字体显示。*/
+        text-transform: uppercase;/*将每个单词转换成大写*/
+        font-weight: 700;
+        /*字体一般都有它本身的粗细等级，网页中一般分为9级，每隔100为一个等级，
+        7级，也就是700，是最接近bold的。一般字体，600-900，效果相差不大；*/
+        border-radius: 3px;
+        font-size: 18px;
+        padding: 20px 40px
+      }
+      .package .push-button {
+        width: 226px;
+        margin-top: 50px;
+        margin-right: auto;
+        margin-left: auto;
+      }
+      .package button {
+        text-align: center;
+        margin-right: auto;
+        margin-left: auto;
+      }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="navbar layout clearfix">
+      <a class="logo" href="#">火影忍者风云榜</a>
+      <ul class="nav">
+        <li><a href="">せんじゅ はらしま</a></li>
+        <li><a href="">せんじゅ とびらま</a></li>
+        <li><a href="">さるとび ヒルゼン</a></li>
+        <li><a href="">なみかぜ みなと</a></li>
+        <li><a href="">ツナデ</a></li>
+      </ul>
+    </div>
+      <div class="intro layout">
+        <h1>忍者的传说</h1>
+        <h2>坚守自己的忍道 保持自己的信念</h2>
+        <a href="" class="button">我要当火影</a>
+      </div>
+  </header>
+  <main class="layout">
+    <section><!-- 文档中的区段 -->
+      <h2>忍者村</h2>
+      <p>关于各个忍村的介绍</p>
+      <ul class="family-intro clearfix">
+        <li>
+          <span class="iconfont icon-cc1"></span>
+          <h3>木叶忍者村</h3>
+          <p>其头目被称之为——火影。由初代火影千手柱间于宇智波•斑共同创建，拥有精锐忍者军团的最强忍者村，全体村民十分团结并拥有许多优秀的忍者，让木叶忍者村变得非常繁荣，而且这也让村民有了在其他国家的民众身上不太容易看到的爱国心。</p>
+        </li>
+        <li>
+          <span class="iconfont icon-cc2"></span>
+          <h3>沙隐忍者村</h3>
+          <p>现任风影为第五代---我爱罗，处事风格相对比较极端，不多经过晓事件后在慢慢改变。于木叶为同盟忍村。沙尘飞舞的严苛环境，化为培育忍者的绝佳粮食。</p>
+        </li>
+        <li>
+          <span class="iconfont icon-cc3"></span>
+          <h3>岩隐忍者村</h3>
+          <p>被天险包围，以坚固的防守著称忍者村是由许多岩石高山所形成的绝密天然要塞，拥有容易防守的地利，敌人难以攻入其内部，不过同样的，他们要于外界交流也相对的困难起来。</p>
+        </li>
+    </ul>
+  </section>
+  <section>
+    <h2>火影九大尾兽</h2>
+    <p>尾兽是具有强大查克拉量的九只妖怪，在故事中因拥有强大力量而对民间造成威胁，故各自被封印在人体内，称之为“人柱力”，早期连载期间，网络上有讹传称九尾拥有无限查克拉量，但作者岸本齐史并未在其任何一本出版书中提过“九尾查克拉无上限”。</p>
+    <div class="family clearfix">
+        <figure>
+          <a href=""><img src="imgs/91ef76c6a7efce1be2fbfc8ba251f3deb58f659a.png" alt=""></a>
+          <figcaption>一尾守鹤：化身为僧的狸猫</figcaption> 
+          <p>一尾守鹤体色土黄，是拥有一条大尾巴形似狸猫的妖怪。一尾最初登场是在中忍考试的时候，作为夺取木叶村的反动形象出现。</p>
+        </figure>
+        <figure>
+          <a href=""><img src="imgs/9213b07eca80653855ec93529adda144ad348268.png" alt=""></a>
+          <figcaption>二尾又旅：猫妖“猫又”</figcaption> 
+          <p>《火影忍者》中二尾又旅的形象为一只拥有巨翼的二尾黑色猫妖。出场的时间较短，几乎一笔带过，最后战死。</p>
+        </figure>
+        <figure>
+          <a href=""><img src="imgs/b03533fa828ba61e0a89ff6e4c34970a304e590f.png" alt=""></a>
+          <figcaption>三尾矶怃：袭击船只的巨鱼</figcaption> 
+          <p>三尾矶怃是有三条扁尾巴，身上有刺菱的乌龟。三尾出场时是没被封印的，但随后被“晓”组织捕获并封印。</p>
+        </figure>
+        <figure>
+          <a href=""><img src="imgs/a8ec8a13632762d0ea9e93feadec08fa503dc6ca.png" alt=""></a>
+          <figcaption>四尾孙悟空：美猴王孙悟空</figcaption> 
+          <p>火影中的四尾是拥有四条恐龙状尾巴的红毛猿猴，头上戴着金箍，自称为“水帘洞的美猴王”。它在前期剧情出现少，后期作为中间人使鸣人和九尾的感情更加深厚。</p>
+        </figure>
+        <figure>
+          <a href=""><img src="imgs/54fbb2fb43166d22662922d54b2309f79052d210.png" alt=""></a>
+          <figcaption>五尾穆王：独角兽</figcaption> 
+          <p>穆王是一只结合了海豚的形象，头长犄角，身垂五尾的白色似马巨兽。前期剧情没出现过，后来被“晓”控制用以与九尾和八尾对战。</p>
+        </figure>
+        <figure>
+          <a href=""><img src="imgs/10dfa9ec8a1363277e1bf5729c8fa0ec09fac7f8.png" alt=""></a>
+          <figcaption>六尾犀犬：蛞蝓</figcaption> 
+          <p>其外形却非犬而似蛞蝓，另外，在漫画里由于“蛞蝓”这一名字已被使用过(纲手的通灵兽蛞蝓)，且二者非常相似，故才将六尾的名字改做“犀犬”。</p>
+        </figure>
+        <figure>
+          <a href=""><img src="imgs/a08b87d6277f9e2f0fdc2a491230e924b999f381.png" alt=""></a>
+          <figcaption>七尾重明：独角仙</figcaption> 
+          <p>十大尾兽中最为狡猾的是七尾重明，它是一只身着六翅，拖着条长尾巴的巨形怪兽。善伪装，喜掘地，把自己藏身在黏土之中。</p>
+        </figure>
+        <figure>
+          <a href=""><img src="imgs/u=2553791166,3460458504&fm=175&app=25&f=JPEG.jpg" alt=""></a>
+          <figcaption>八尾牛鬼：蜘蛛身的牛鬼</figcaption> 
+          <p>八尾牛鬼是一只长着类似章鱼触手尾巴的巨牛，性格狂躁，历任人柱力都无法完全控制它，直到奇拉比的出现。它可以与人柱力配合免疫幻术，用了一条尾巴作为替身骗过了佐助。</p>
+        </figure>
+        <figure>
+          <a href=""><img src="imgs/u=1598192094,2061456368&fm=175&app=25&f=JPEG.jpg" alt=""></a>
+          <figcaption>九尾喇嘛：九尾狐</figcaption> 
+          <p>这只全身赤红、拥有九条尾巴的妖狐在故事一开始就被封印在鸣人身上，鸣人与九尾的相处从最初的争吵、对立到相互友好，成为伙伴，一起并肩作战对付企图摧毁忍者世界的对手，可以看出主人公鸣人的慢慢成长。</p>
+        </figure>
+      </div>
+    </section>
+    <section>
+        <h2>木叶编年史</h2>
+        <p>历年发展曲线</p>
+        <ul class="timeline">
+          <li>
+            <img src="imgs/u=1327403327,3070794547&fm=26&gp=0.jpg" alt="">
+            <dl>                               <!-- dl是自定义列表 -->
+              <dt>木叶前8年 </dt>              <!-- dt是列表的标题 -->
+              <dd>创造第一个九尾人柱力</dd><!-- dd是内容 -->
+              <dd>出生在木叶前期的还活着的人物就这么三位,而且三代火影还在木叶60年的木叶毁灭计划中为村捐躯。但是在那个时间段, 这三位估计没有发挥任何作用, 活跃在这个时代的舞台上的 都是传说中的人物, 初代火影, 二代火影, 宇智波先祖, 四大家族族长等等~~</dd>
+            </dl>
+          </li>
+          <li>
+            <img src="imgs/u=3498174210,1244424545&fm=26&gp=0.jpg" alt="">
+            <dl>                               <!-- dl是自定义列表 -->
+              <dt>木叶16年</dt>              <!-- dt是列表的标题 -->
+              <dd>第一次忍界大战</dd><!-- dd是内容 -->
+              <dd>大蛇在木叶毁灭计划的时候50岁，当时木叶建立60年，因此大蛇是木叶10年出生。从344的对话看出来，大蛇当时已经接受三代的指导，大蛇6 岁忍者学校毕业，因此344回忆中的小蛇丸应该是木叶16年的事情。</dd>
+            </dl>
+          </li>
+          <li>
+            <img src="imgs/u=3593698211,2839284595&fm=26&gp=0.jpg" alt="">
+            <dl>                               <!-- dl是自定义列表 -->
+              <dt>木叶27年</dt>              <!-- dt是列表的标题 -->
+              <dd>高速发展的承平时期</dd><!-- dd是内容 -->
+              <dd>这一批人，生于战祸肆虐后百业待兴的木叶，童年在惨烈的第二次忍界大战中度过，成年后一边作为木叶中坚投身第三次忍界大战，最后在晓组织即将挑 起的新的战乱面前，这批老而弥坚的木叶高层无疑是村子防卫的中流砥柱，也是小强们在外面撒野的最强大后盾。</dd>
+            </dl>
+          </li>
+          <li>
+            <img src="imgs/u=3235897801,4213080652&fm=26&gp=0.jpg" alt="">
+            <dl>                               <!-- dl是自定义列表 -->
+              <dt>木叶39年</dt>              <!-- dt是列表的标题 -->
+              <dd>传说中的三忍</dd><!-- dd是内容 -->
+              <dd>经过10年生息，木叶村进入一个鼎盛期。老一辈的三代火影，团藏，两位参谋正值壮龄，40岁壮龄正是经验和能力最完美的时期，三代的最强火影和忍者博士的身份想必就是在这场战争中奠定的。而当时中生代的三忍和白牙正进入忍者的黄金期</dd>
+            </dl>
+          </li>
+          <li>
+            <span class="img">火影鸣人</span>
+          </li>
+        </ul>
+    </main>
+
+
+
+    <footer>
+          <div class="begin clearfix">
+            <h2>《火影忍者》三大美女</h2>
+            <h3>《火影忍者》里的美女如云,有没有你喜欢的类型?</h3>
+          </div>
+        <div class="box clearfix">
+          <div class="personal clearfix">
+            <img src="imgs/u=2247602285,2963537197&fm=26&gp=0.jpg" alt="">
+            <h4>春野樱</h4>
+            <p>战胜无数悲愁并将化为食粮的战野樱花，刹那间纷乱的胜开——者之书。</p>
+            <ul>
+              <li>
+                  <span class="iconfont icon-cc1"></span>
+                  <span class="iconfont icon-cc1"></span>
+                  <span class="iconfont icon-cc1"></span>
+              </li>
+            </ul>
+          </div>
+          <div class="personal clearfix">
+            <img src="imgs/u=1814261801,3607038330&fm=26&gp=0.jpg" alt="">
+            <h4>日向雏田</h4>
+            <p>初次优美绽放的一朵百合——者之书。</p>
+            <ul>
+              <li>
+                  <span class="iconfont icon-cc1"></span>
+                  <span class="iconfont icon-cc1"></span>
+                  <span class="iconfont icon-cc1"></span>
+              </li>
+            </ul>
+          </div>
+          <div class="personal clearfix">
+            <img src="imgs/u=794292652,4190601103&fm=26&gp=0.jpg" alt="">
+            <h4>山中井野</h4>
+            <p>潜藏于好胜个性中的温柔，在木叶忍者村绽放的才色兼备的忍者之花——斗之书。</p>
+            <ul>
+              <li>
+                  <span class="iconfont icon-cc1"></span>
+                  <span class="iconfont icon-cc1"></span>
+                  <span class="iconfont icon-cc1"></span>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </footer>
+      
+
+      <div class="package">
+          <div class="large">
+              <h3>CONTACT US</h3>
+              <p>Lorem ipsum dolor sit amet consectetur.</p>
+          </div>
+          <div class="ensemble">
+            <ul class="three">
+              <li>
+                <input type="text" name="username" placeholder="YOUR NAME" style="width:555px;height:62px;font-size:25px">
+              </li>
+              <li>
+                <input type="text" name="username" placeholder="YOUR NAME" style="width:555px;height:62px;font-size:25px">
+              </li>
+              <li>
+                <input type="text" name="username" placeholder="YOUR NAME" style="width:555px;height:62px;font-size:25px">
+              </li>
+            </ul>
+            <ul class="single">
+              <li>
+                  <textarea name="" id="" placeholder="YOUR NAME" cols="30" rows="10" style="width:555px;height:200px;font-size:30px"></textarea>
+              </li>
+          </ul>
+          </div>
+          <div class="push-button">
+          <button>SEND MESSAJE</button>
+          </div>
+      </div>
+</body>
+</html>

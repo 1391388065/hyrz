@@ -1,0 +1,37 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
+  a {
+    text-decoration: none;
+  }
+  ul {
+    list-style: none;
+  }
+  .clearfix::after {
+    content: '';
+    display: block;
+    clear: both;
+  }
+  .button {
+    display: inline-block;
+    font-size: 18px;
+    color: #fff;
+    background-color: #f7ba3e;
+    padding: 5px 10px;/*内边距 上下5px  左右10px*/
+    border-radius: 4px;
+    opacity: 0.8; /*默认的情况下是0.8*/
+  }
+  .button:hover {/*改样式*/
+    opacity: 1; /*鼠标放上去的时候是1*/
+  }
+  .layout {
+    width: 1500px;
+    margin: 0 auto;
+  }
+  body {  /*bddy样式(字体样式，字体颜色等)a链接是不会变的，a链接有自己的默认样式*/
+    font:14px/1.5 Arial;
+    background-color: #fff;
+    color: #444;
+  }
